@@ -11,6 +11,10 @@ function App() {
 
    function selecionaTarefa(tarefaSelecionada: ITarefa) {
       setSelecionado(tarefaSelecionada);
+      setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({
+         ...tarefa,
+         selecionado: tarefa.id === tarefaSelecionada.id ? true : false,
+      })))
    }
 
    return (
@@ -20,7 +24,7 @@ function App() {
          tarefas={tarefas}
          selecionaTarefa={selecionaTarefa}
          />
-         <Cronometro />
+         <Cronometro selecionado={selecionado} />
       </div>
    );
 }
